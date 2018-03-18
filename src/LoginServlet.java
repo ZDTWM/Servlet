@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		request.setCharacterEncoding("UTF-8");
+		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		System.out.println("name:" + name);
@@ -14,9 +16,10 @@ public class LoginServlet extends HttpServlet{
 		
 		String html = null;
 		if("admin".equals(name) && "123".equals(password))
-			html = "<div style='color:green'>success</div>";
+			html = "<div style='color:green'>µÇÂ½³É¹¦</div>";
 		else
-			html = "<div style='color:red'>success</div>";
+			html = "<div style='color:red'>µÇÂ½Ê§°Ü</div>";
+		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter pw = response.getWriter();
 		pw.println(html);

@@ -1,12 +1,13 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet{
-	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
 		//请求设置中文
 		request.setCharacterEncoding("UTF-8");
 		
@@ -15,15 +16,12 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("name:" + name);
 		System.out.println("password:" + password);
 		
-		String html = null;
-		if("admin".equals(name) && "123".equals(password))
-			html = "<div style='color:green'>登陆成功</div>";
-		else
-			html = "<div style='color:red'>登陆失败</div>";
-		//服务器响应设置中文
-		response.setContentType("text/html; charset=UTF-8");
 		
-		PrintWriter pw = response.getWriter();
-		pw.println(html);
+		if("admin".equals(name) && "123".equals(password))
+			//服务端跳转
+			request.getRequestDispatcher("success.html").forward(request, response);
+		else
+			//客户端跳转
+			response.sendRedirect("fail.html");
 	}
 }

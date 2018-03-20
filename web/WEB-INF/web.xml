@@ -32,4 +32,14 @@
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+        <servlet-name>HeroListServlet</servlet-name>
+        <servlet-class>servlet.HeroListServlet</servlet-class>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>HeroListServlet</servlet-name>
+        <url-pattern>/listHero</url-pattern>
+    </servlet-mapping> 
+	
 </web-app>
